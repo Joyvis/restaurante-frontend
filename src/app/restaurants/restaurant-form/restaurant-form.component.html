@@ -1,0 +1,28 @@
+<div class="container-fluid">
+	<h1>{{ title }}</h1>
+    <div class="row">
+        <div class="col-md-12">
+        	<form materialize [formGroup]="form" (ngSubmit)="save()">
+		        <div class="form-group">
+		        	<label for="name"
+		               [class.active]="restaurant.name" 
+		               class="control-label" 
+		               data-error="Name is required and needs to contain at least 3 chars">
+			          Nome
+			        </label>
+		        	<input id="name" type="text" class="validate form-control"
+		               [(ngModel)]="restaurant.name" formControlName="name"
+		               [class.invalid]="form.controls['name'].touched && !form.controls['name'].valid"
+		        	>		        	
+		        </div>		        
+		        <a [routerLink]="['/restaurants']" class="btn btn-sm btn-danger">
+		        	<i class="material-icons right">cancel</i> <span>Cancelar</span>
+		        </a>
+		        <button class="btn btn-sm btn-success" type="submit"
+			        [disabled]="!form.valid">
+			      	<i class="material-icons right">save</i> <span>Salvar</span>
+			    </button>
+	        </form>
+        </div>
+    </div>
+</div>

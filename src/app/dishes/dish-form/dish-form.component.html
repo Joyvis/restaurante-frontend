@@ -1,0 +1,52 @@
+<div class="container-fluid">
+	<h1>{{ title }}</h1>
+    <div class="row">
+        <div class="col-md-12">
+        	<form materialize [formGroup]="form" (ngSubmit)="save()">
+		        <div class="form-group">
+		        	<label for="name"
+		               [class.active]="dish.name" 
+		               class="control-label">
+			          Nome
+			        </label>
+		        	<input id="name" type="text" class="validate form-control"
+		               [(ngModel)]="dish.name" formControlName="name"
+		               [class.invalid]="form.controls['name'].touched && !form.controls['name'].valid"
+		        	>		        	
+		        </div>	
+		        <div class="form-group">
+		        	<label for="price"
+		               [class.active]="dish.price" 
+		               class="control-label">
+			          Preço
+			        </label>
+		        	<input id="price" type="number" class="validate form-control"
+		               [(ngModel)]="dish.price" formControlName="price" step=any		              
+		               [class.invalid]="form.controls['price'].touched && !form.controls['price'].valid"
+		        	>		        	
+		        </div>	
+		        <div class="form-group">
+		        	<label for="restaurant_id"
+		               [class.active]="dish.restaurant_id" 
+		               class="control-label">
+			          Restaurante
+			        </label>
+			        <select name="restaurant_id" formControlName="restaurant_id" [(ngModel)]="dish.restaurant_id" class="form-control"
+			        [class.invalid]="form.controls['restaurant_id'].touched && !form.controls['restaurant_id'].valid">
+					    <option *ngFor="let restaurant of restaurants" [value]="restaurant.id">
+						  {{restaurant.name}}
+						</option>
+					</select>
+	        	
+		        </div>		        
+		        <a [routerLink]="['/dishes']" class="btn btn-sm btn-danger">
+		        	<i class="material-icons right">cancel</i> <span>Cancelar</span>
+		        </a>
+		        <button class="btn btn-sm btn-success" type="submit"
+			        [disabled]="!form.valid">
+			      	<i class="material-icons right">save</i> <span>Salvar</span>
+			    </button>
+	        </form>
+        </div>
+    </div>
+</div>

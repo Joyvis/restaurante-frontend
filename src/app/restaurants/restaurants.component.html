@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <h1>Restaurantes</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">                    
+                    <h4>Filtros</h4>
+                    <div class="form-group">
+                        <label class="control-label">Nome:</label>
+                        <input #input placeholder="Pesquisar" id="search" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-xs btn-info" type="submit">
+                            <i class="material-icons right">search</i> <span>Pesquisar</span>
+                        </button>
+                        <button class="btn btn-xs btn-success" [routerLink]="['/restaurants/new']"><i class="material-icons">add</i> <span>Adicionar</span></button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 5%;" class="text-center"></th>
+                        <th style="width: 5%;" class="text-center"></th>
+                        <th data-field="name">Nome</th>                        
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let restaurant of restaurants | searchPipe: input.value">
+                        <td class="text-center">
+                            <a (click)="deleteRestaurant(restaurant)">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a [routerLink]="['/restaurants', restaurant.id]">
+                                <i class="material-icons">mode_edit</i>
+                            </a>
+                        </td>
+                        <td>{{ restaurant.name }}</td>      
+                        
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
