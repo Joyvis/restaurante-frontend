@@ -3,7 +3,7 @@
 
 FrontEnd Desenvolvido em AngularJS 2 para se comunicar com API desenvolvida em RoR
 
-# # Instruções de uso
+## Instruções de uso
 1. Clonar o projeto;
 2. Executar o comando 'npm install';
 3. Alterar o arquivo src/app/app.config.ts colocando a url onde a API está funcionado;
